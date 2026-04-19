@@ -1,3 +1,15 @@
+avoid puppeteer sync: add to gitignore
+
+# chrome
+.local-chrome/
+
+
+
+
+
+
+
+
 2. The Flutter "Gotcha": The Renaming Problem
 
 There is one major annoyance with Flutter template repositories: the bundle ID (e.g., com.example.skeleton) and the app name are hardcoded deeply inside the native Android, iOS, web, and macOS folders. If you just clone the template, your new app will still technically be named "skeleton".
