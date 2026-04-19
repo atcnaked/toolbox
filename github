@@ -1,0 +1,28 @@
+2. The Flutter "Gotcha": The Renaming Problem
+
+There is one major annoyance with Flutter template repositories: the bundle ID (e.g., com.example.skeleton) and the app name are hardcoded deeply inside the native Android, iOS, web, and macOS folders. If you just clone the template, your new app will still technically be named "skeleton".
+
+How to fix this in your skeleton:
+Do not rename files manually every time. In your skeleton's pubspec.yaml, add a dev dependency like the rename package.
+
+Then, at the very top of your skeleton's README.md, leave yourself these exact instructions:
+
+    Post-Clone Instructions:
+
+        Run flutter pub get
+
+        Run dart run rename setAppName --value "My New App"
+
+        Run dart run rename setBundleId --value "com.mycompany.mynewapp"
+
+3. The Pro Alternative: Mason (Dynamic Boilerplate)
+
+If your skeleton app is getting too complex—for example, sometimes you want Firebase included, and sometimes you don't—a static GitHub Template might become too rigid.
+
+In that case, look into a tool called mason. It allows you to create highly customizable templates (called "bricks"). You can host your custom bricks on GitHub, and when you start a project, you run a command like mason make my_flutter_skeleton, and it will prompt you in the terminal:
+
+    What is the app name?
+
+    Include Firebase? (y/n)
+
+    Include your standard UI theme? (y/n)
