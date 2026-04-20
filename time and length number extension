@@ -1,0 +1,47 @@
+1. The Built-in Duration Class (Length of Time)
+
+Since you mentioned DateTime, it is highly likely you are thinking of Dart's native Duration class, which represents a "length" of time between two DateTimes. You might be slightly conflating the abbreviations for "milliseconds" (ms) or "minutes" (m/min) with "millimeters" (mm).
+
+Dart natively provides these properties on Duration:
+Dart
+
+Duration lengthOfTime = DateTime.now().difference(pastDate);
+
+// You might be remembering these built-in getters:
+int millis = lengthOfTime.inMilliseconds; 
+int mins = lengthOfTime.inMinutes;
+
+2. UI "Length" Packages (.mm)
+
+If you specifically remember converting a physical length into Flutter's logical UI pixels, you likely used a display metrics or responsive sizing package.
+
+Packages like zap_sizer, screen_go, or display_metrics extend the num class to give you physical size conversions using .mm:
+Dart
+
+Container(
+  // Converts 10 physical millimeters to Flutter logical pixels
+  width: 10.mm, 
+  height: 5.cm, 
+)
+
+(Note: The most ubiquitous package in this space is flutter_screenutil, which uses .w, .h, and .sp. However, the packages mentioned above are the ones that specifically provide the .mm syntax).
+3. Time Extension Packages (.minutes / .milliseconds)
+
+If you were writing a length of time directly on a raw number, you might have used the popular time or supercharged packages. They allow you to apply extensions to integers to cleanly generate Duration objects:
+Dart
+
+Duration length = 10.minutes; 
+Duration tinyLength = 5.milliseconds;
+
+Roll Your Own .inMm Extension
+
+If you loved the .inMm syntax for physical UI layouts and want to recreate it without bloating your app with a new package, Dart makes it incredibly simple. You can define your own extension to convert physical millimeters to Flutter logical pixels (roughly 3.8 logical pixels per millimeter on standard screens):
+Dart
+
+extension PhysicalLengthExt on num {
+  /// Converts millimeters to Flutter logical pixels
+  double get inMm => this * 3.8; 
+}
+
+// Usage anywhere in your app:
+// SizedBox(width: 50.inMm)
