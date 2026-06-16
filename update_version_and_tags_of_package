@@ -1,0 +1,13 @@
+void myPrintInSrc() {
+  print('''hello I am myPrintInSrc tags version 6.0.0
+  In order to update a plugin with versioning:
+  1. update the version in the yaml of the plugin
+  2. sync github (=commit+push)
+  3. then select the commit in the list and "create tag" with version number
+  4. then select the commit in the list and "push tag" 
+  5. then select the commit in the list to check that the version lies with the proper commit
+  6. in Github update and go to main-> tags to check that it exist with the proper commit
+  7. In the code consuming the plugin, change the version number and update !
+  
+  a VS code extension "Auto Increase Git Version" may help to handle versioning''');
+}
